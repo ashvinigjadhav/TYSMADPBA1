@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Learning Journey - LearnScape</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #e2e8f0;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+        }
+
+        .navbar {
+            background: rgba(15, 23, 42, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+        }
+
+        .btn-primary-custom {
+            background: var(--gradient-1);
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .page-header {
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .summary-cards {
+            margin-bottom: 3rem;
+        }
+
+        .summary-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .summary-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .summary-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .table-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+        }
+
+        .table {
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        .table thead th {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .table tbody td {
+            padding: 1.5rem 1rem;
+            vertical-align: middle;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .table tbody tr:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .progress {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .progress-bar {
+            background: var(--gradient-1);
+            border-radius: 10px;
+        }
+
+        .badge-custom {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+
+        .badge-technology {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .badge-design {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .badge-business {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .btn-action {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin: 0 0.25rem;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--primary-color);
+        }
+
+        .btn-view:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-remove {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .btn-remove:hover {
+            background: #ef4444;
+            color: white;
+        }
+
+        /* Mobile Card View */
+        .mobile-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .mobile-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-card-info {
+            margin-bottom: 0.75rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            .table-card {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-cards {
+                display: none;
+            }
+        }
+
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 3rem 0 1.5rem;
+            margin-top: 5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-map-marked-alt"></i> LearnScape
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="roadmaps.html">Roadmaps</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="my-journey.html">
+                            <i class="fas fa-route"></i> My Journey
+                        </a>
+                    </li>
+                </ul>
+                <div class="d-flex ms-3">
+                    <a href="login.html" class="btn btn-outline-custom me-2">Login</a>
+                    <a href="register.html" class="btn btn-primary-custom">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">My Learning Journey</h1>
+            <p class="lead text-muted">Track your progress and manage your roadmaps</p>
+        </div>
+    </section>
+
+    <!-- Summary Cards -->
+    <div class="container">
+        <div class="row g-4 summary-cards">
+            <div class="col-lg-3 col-md-6">
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <div class="summary-value">3</div>
+                    <div class="summary-label">Active Roadmaps</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="summary-value">45</div>
+                    <div class="summary-label">Total Resources</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="summary-value">12-18</div>
+                    <div class="summary-label">Months Estimated</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="summary-card">
+                    <div class="summary-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="summary-value">38%</div>
+                    <div class="summary-label">Overall Progress</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop Table View -->
+    <div class="container mb-5">
+        <div class="table-card">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3><i class="fas fa-list"></i> My Roadmaps</h3>
+                <a href="roadmaps.html" class="btn btn-primary-custom">
+                    <i class="fas fa-plus"></i> Add New Roadmap
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Roadmap</th>
+                            <th>Domain</th>
+                            <th>Resources</th>
+                            <th>Duration</th>
+                            <th>Progress</th>
+                            <th>Source</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <strong>Complete Web Development</strong>
+                                <br>
+                                <small class="text-muted">Frontend, Backend & Full Stack</small>
+                            </td>
+                            <td><span class="badge badge-custom badge-technology">Technology</span></td>
+                            <td>50+ curated</td>
+                            <td>6-12 months</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="progress flex-grow-1 me-2" style="width: 100px;">
+                                        <div class="progress-bar" style="width: 45%"></div>
+                                    </div>
+                                    <span class="small">45%</span>
+                                </div>
+                            </td>
+                            <td>
+                                <small class="text-muted">freeCodeCamp, MDN</small>
+                            </td>
+                            <td>
+                                <button class="btn btn-action btn-view"><i class="fas fa-eye"></i> View</button>
+                                <button class="btn btn-action btn-remove"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>UI/UX Design Fundamentals</strong>
+                                <br>
+                                <small class="text-muted">User Research & Prototyping</small>
+                            </td>
+                            <td><span class="badge badge-custom badge-design">Design</span></td>
+                            <td>40+ curated</td>
+                            <td>4-8 months</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="progress flex-grow-1 me-2" style="width: 100px;">
+                                        <div class="progress-bar" style="width: 20%"></div>
+                                    </div>
+                                    <span class="small">20%</span>
+                                </div>
+                            </td>
+                            <td>
+                                <small class="text-muted">YouTube, Figma</small>
+                            </td>
+                            <td>
+                                <button class="btn btn-action btn-view"><i class="fas fa-eye"></i> View</button>
+                                <button class="btn btn-action btn-remove"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Data Science Roadmap</strong>
+                                <br>
+                                <small class="text-muted">Python, ML & Analytics</small>
+                            </td>
+                            <td><span class="badge badge-custom badge-technology">Technology</span></td>
+                            <td>45+ curated</td>
+                            <td>8-14 months</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="progress flex-grow-1 me-2" style="width: 100px;">
+                                        <div class="progress-bar" style="width: 50%"></div>
+                                    </div>
+                                    <span class="small">50%</span>
+                                </div>
+                            </td>
+                            <td>
+                                <small class="text-muted">Kaggle, Coursera</small>
+                            </td>
+                            <td>
+                                <button class="btn btn-action btn-view"><i class="fas fa-eye"></i> View</button>
+                                <button class="btn btn-action btn-remove"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Card View -->
+    <div class="container mobile-cards mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3><i class="fas fa-list"></i> My Roadmaps</h3>
+            <a href="roadmaps.html" class="btn btn-primary-custom btn-sm">
+                <i class="fas fa-plus"></i> Add
+            </a>
+        </div>
+
+        <!-- Card 1 -->
+        <div class="mobile-card">
+            <div class="mobile-card-header">
+                <div>
+                    <div class="mobile-card-title">Complete Web Development</div>
+                    <span class="badge badge-custom badge-technology">Technology</span>
+                </div>
+            </div>
+            <div class="mobile-card-info">
+                <i class="fas fa-book"></i> 50+ Resources | <i class="fas fa-clock"></i> 6-12 months
+            </div>
+            <div class="mobile-card-info">
+                <i class="fas fa-link"></i> freeCodeCamp, MDN
+            </div>
+            <div class="mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                    <small>Progress</small>
+                    <small>45%</small>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 45%"></div>
+                </div>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-action btn-view flex-grow-1"><i class="fas fa-eye"></i> View Details</button>
+                <button class="btn btn-action btn-remove"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="mobile-card">
+            <div class="mobile-card-header">
+                <div>
+                    <div class="mobile-card-title">UI/UX Design Fundamentals</div>
+                    <span class="badge badge-custom badge-design">Design</span>
+                </div>
+            </div>
+            <div class="mobile-card-info">
+                <i class="fas fa-book"></i> 40+ Resources | <i class="fas fa-clock"></i> 4-8 months
+            </div>
+            <div class="mobile-card-info">
+                <i class="fas fa-link"></i> YouTube, Figma
+            </div>
+            <div class="mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                    <small>Progress</small>
+                    <small>20%</small>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 20%"></div>
+                </div>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-action btn-view flex-grow-1"><i class="fas fa-eye"></i> View Details</button>
+                <button class="btn btn-action btn-remove"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="mobile-card">
+            <div class="mobile-card-header">
+                <div>
+                    <div class="mobile-card-title">Data Science Roadmap</div>
+                    <span class="badge badge-custom badge-technology">Technology</span>
+                </div>
+            </div>
+            <div class="mobile-card-info">
+                <i class="fas fa-book"></i> 45+ Resources | <i class="fas fa-clock"></i> 8-14 months
+            </div>
+            <div class="mobile-card-info">
+                <i class="fas fa-link"></i> Kaggle, Coursera
+            </div>
+            <div class="mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                    <small>Progress</small>
+                    <small>50%</small>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" style="width: 50%"></div>
+                </div>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-action btn-view flex-grow-1"><i class="fas fa-eye"></i> View Details</button>
+                <button class="btn btn-action btn-remove"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">
+                        <i class="fas fa-map-marked-alt"></i> LearnScape
+                    </h5>
+                    <p class="text-muted">Empowering learners worldwide with structured, goal-oriented learning paths.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="mb-3">Quick Links</h6>
+                    <div>
+                        <a href="index.html" class="d-block mb-2 text-muted text-decoration-none">Home</a>
+                        <a href="about.html" class="d-block mb-2 text-muted text-decoration-none">About</a>
+                        <a href="roadmaps.html" class="d-block mb-2 text-muted text-decoration-none">Roadmaps</a>
+                        <a href="contact.html" class="d-block mb-2 text-muted text-decoration-none">Contact</a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="mb-3">Popular Paths</h6>
+                    <div>
+                        <a href="#" class="d-block mb-2 text-muted text-decoration-none">Web Development</a>
+                        <a href="#" class="d-block mb-2 text-muted text-decoration-none">Data Science</a>
+                        <a href="#" class="d-block mb-2 text-muted text-decoration-none">UI/UX Design</a>
+                        <a href="#" class="d-block mb-2 text-muted text-decoration-none">Digital Marketing</a>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="mb-3">Connect With Us</h6>
+                    <div class="social-links">
+                        <a href="#" class="text-muted me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-muted me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-muted me-3"><i class="fab fa-github fa-lg"></i></a>
+                        <a href="#" class="text-muted"><i class="fab fa-discord fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center text-muted">
+                <p>&copy; 2025 LearnScape. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Remove button functionality
+        document.querySelectorAll('.btn-remove').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(confirm('Are you sure you want to remove this roadmap?')) {
+                    this.closest('tr, .mobile-card').remove();
+                }
+            });
+        });
+
+        // View button functionality
+        document.querySelectorAll('.btn-view').forEach(btn => {
+            btn.addEventListener('click', function() {
+                alert('Opening roadmap details...');
+            });
+        });
+    </script>
+</body>
+</html>
