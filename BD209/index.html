@@ -1,0 +1,168 @@
+<html>
+
+<head>
+    <title>
+        PharmEasy
+
+    </title>
+
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+
+    <header>
+        
+        <nav class="navbar">
+
+            <div class="container">
+
+                <div  class="lhs">
+
+                    <img src="logo.png">
+
+                    <h1><b>PharmEasy</b></h1>
+                </div>
+
+                <div class="rhs">
+
+                    <a href="#home">Home</a>
+                    <a href="#about">About Us</a>
+                    <a href="prod.html">Products</a>
+                    <a href="login.html">Login</a>
+                    <a href="reg.html">Register</a>
+                    <a href="#contact">Contact Us</a>
+                    <button onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="secA" id="about">
+
+            <div class="abtLhs">
+
+                <h1>Welcome To PharmEasy</h1>
+                <p>Your one stop solution for all pharmaceutical products since 2001</p>
+            </div>
+
+            <div class="abtRhs">
+
+                <img src="abt.png">
+
+            </div>
+
+        </section>
+
+        <section class="secB">
+
+            <h1><b>Our Mission</b></h1>
+            <li>Safe and Accurate Medication Dispensing:
+                Pharmacists ensure that patients receive the correct dosage and instructions for their medications. 
+            </li>
+
+            <li>
+                Patient Counseling:
+                Providing information about medications, including potential side effects, interactions, and proper administration. 
+            </li>
+            <li>
+                Disease Management Support:
+                Assisting patients in managing their chronic conditions through medication adherence and other services.
+            </li>
+            <li>
+                Drug Information:
+                Serving as a resource for patients and healthcare professionals regarding medications.
+             </li>
+        </section>
+
+        <section class="secC">
+
+            <h1>Our Team</h1>
+
+            <div class="itemsContainer">
+
+                <div class="items">
+
+                    <img src="p1.jpg">
+                    <h2>Rahul Joshi</h2>
+                    <p>Frontend Developer</p>
+
+                </div>
+
+                <div class="items">
+
+                    <img src="p2.png">
+                    <h2>Shrinivas Sherikar</h2>
+                    <p>Backend Developer</p>
+
+                </div>
+
+                <div class="items">
+
+                    <img src="p3.png">
+                    <h2>Zia Kapoor</h2>
+                    <p>Product Manager</p>
+
+                </div>
+
+                <div class="items">
+
+                    <img src="p4.png">
+                    <h2>Varad Mandhare</h2>
+                    <p>Database Developer</p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+        <section class="contact" id="contact">
+
+            <div class="cLhs">
+                
+                <img src="contact.png">
+
+            </div>
+
+            <div class="cRhs">
+
+                <h1>Send us a message</h1>
+
+                <input type="email" id="email" placeholder="Email" required>
+                <textarea id="msg" cols="4" rows="4" text="Message">
+
+
+                </textarea>
+
+                <input type="submit" required>
+                
+            </div>
+        </section>
+    </main>
+
+    <footer>
+
+        <p>Copyright © 2025 , Designed by Samyak Kedari</p>
+    </footer>
+
+    <script>
+        const loggedInUser = sessionStorage.getItem('loggedInUser');
+        if (!loggedInUser) {
+            // If no user is logged in, hide the logout button
+            document.querySelector('button').style.display = 'none';
+        }
+    
+        function logout() {
+            sessionStorage.removeItem('loggedInUser');
+            alert("You have been logged out.");
+            window.location.href = "login.html"; // Redirect to login page after logout
+        }
+    </script>
+</body>
+
+</html>
