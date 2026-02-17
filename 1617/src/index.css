@@ -1,0 +1,450 @@
+/*
+============================================
+NEW GOLD & YELLOW THEME STYLES
+============================================
+*/
+:root {
+    /* Palette: Yellows, Golds, Browns, and Creams */
+    --color-gold-primary: #D4AF37;       /* A rich, antique gold for primary actions */
+    --color-gold-primary-hover: #B8860B; /* Darker gold for hover */
+    --color-gold-primary-active: #A07409;/* Even darker for active */
+    
+    --color-gold-secondary: #FFD700;     /* A brighter, vibrant yellow/gold for accents */
+    
+    --color-bg-light: #FFFBF0;           /* Very light ivory/cream background */
+    --color-bg-surface: #FFFFFF;         /* White for cards and modals */
+    
+    --color-text-dark: #4A2A00;          /* A deep, rich brown for main text */
+    --color-text-dark-secondary: #6B4F2E;/* Lighter brown for secondary text */
+    --color-text-light: #FFFFFF;         /* White text for dark backgrounds */
+    
+    --color-border: #EAE0C8;             /* A light, warm beige for borders */
+    --color-error: #D9534F;
+    --color-success: #5CB85C;
+
+    /* Shadows (warm-toned) */
+    --shadow-light: 0 2px 4px rgba(184, 134, 11, 0.1);
+    --shadow-medium: 0 4px 10px rgba(184, 134, 11, 0.15);
+    --shadow-large: 0 10px 25px rgba(184, 134, 11, 0.2);
+
+    /* JS Variables (from your script) */
+    --primary-color: var(--color-gold-primary);
+    --shadow-gold: var(--shadow-medium);
+}
+
+/* 1. Global & Typography Styles */
+body {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6,
+.display-3, .display-4,
+.card-title, .modal-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--color-text-dark);
+    font-weight: 700;
+}
+
+p, .lead, .card-text {
+    color: var(--color-text-dark-secondary);
+}
+
+a {
+    color: var(--color-gold-primary);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--color-gold-primary-hover);
+}
+
+/* 2. Bootstrap Background & Text Overrides */
+.bg-light {
+    background-color: var(--color-bg-light) !important;
+}
+.bg-white {
+    background-color: var(--color-bg-surface) !important;
+}
+.text-dark {
+    color: var(--color-text-dark) !important;
+}
+.text-secondary {
+    color: var(--color-text-dark-secondary) !important;
+}
+
+/* 3. Bootstrap "Primary" (Blue) -> Gold Override */
+.text-primary {
+    color: var(--color-gold-primary) !important;
+}
+
+.bg-primary {
+    background-color: var(--color-gold-primary) !important;
+    color: var(--color-text-light) !important;
+    border: none !important;
+}
+
+.border-primary {
+    border-color: var(--color-gold-primary) !important;
+}
+
+.table-primary {
+    --bs-table-bg: var(--color-gold-primary);
+    --bs-table-border-color: var(--color-gold-primary-hover);
+    --bs-table-color: var(--color-text-light);
+}
+
+.btn-primary {
+    background-color: var(--color-gold-primary) !important;
+    border-color: var(--color-gold-primary) !important;
+    color: var(--color-text-light) !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-light);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--color-gold-primary-hover) !important;
+    border-color: var(--color-gold-primary-hover) !important;
+    color: var(--color-text-light) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-outline-primary {
+    color: var(--color-gold-primary) !important;
+    border-color: var(--color-gold-primary) !important;
+    font-weight: 600;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+    background-color: var(--color-gold-primary) !important;
+    color: var(--color-text-light) !important;
+}
+
+/* 4. Bootstrap "Warning" (Yellow) -> Gold Override (for consistency) */
+.text-warning {
+    color: var(--color-gold-secondary) !important;
+}
+
+.bg-warning {
+    background-color: var(--color-gold-secondary) !important;
+    color: var(--color-text-dark) !important; /* Brighter yellow bg needs dark text */
+    border: none !important;
+}
+
+.border-warning {
+    border-color: var(--color-gold-primary) !important;
+}
+
+.btn-warning {
+    background-color: var(--color-gold-secondary) !important;
+    border-color: var(--color-gold-secondary) !important;
+    color: var(--color-text-dark) !important;
+}
+
+.btn-outline-warning {
+    color: var(--color-gold-primary) !important;
+    border-color: var(--color-gold-primary) !important;
+}
+.btn-outline-warning:hover {
+    background-color: var(--color-gold-primary) !important;
+    color: var(--color-text-light) !important;
+}
+
+/* 5. Bootstrap "Secondary" (Gray) -> Warm Neutral Override */
+.btn-outline-secondary {
+    color: var(--color-text-dark-secondary) !important;
+    border-color: var(--color-border) !important;
+}
+.btn-outline-secondary:hover {
+    background-color: var(--color-bg-light) !important;
+    color: var(--color-text-dark) !important;
+    border-color: var(--color-border) !important;
+}
+
+/* --- In styles.css --- */
+
+/* 6. Component Styling */
+
+/* Navbar */
+.navbar {
+    /* Set custom padding to ensure a small, fixed height */
+    padding-top: 0.5rem !important; 
+    padding-bottom: 0.5rem !important;
+    /* ... other existing styles ... */
+}
+
+/* Reduce logo size */
+.navbar-brand .logo-img {
+    width: 35px; /* Reduced from 40px, or adjust to your preference */
+    height: 35px;
+    /* ... other existing styles ... */
+}
+
+/* Reduce font size for the brand name */
+.navbar-brand .h3 {
+    font-size: 1.25rem !important; 
+}
+
+/* Reduce vertical padding on the main links */
+.nav-link {
+    padding-top: 0.3rem !important;
+    padding-bottom: 0.3rem !important;
+    font-size: 0.9rem; /* Make the text slightly smaller */
+    /* ... other existing styles ... */
+}
+.navbar-toggler-icon {
+    /* SVG icon with a warm brown stroke */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(74, 42, 0, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Cards */
+.card {
+    border: 1px solid var(--color-border) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease;
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+.card:hover {
+    box-shadow: var(--shadow-medium) !important;
+    transform: translateY(-5px);
+    border-color: var(--color-gold-primary) !important;
+}
+
+/* Shadows */
+.shadow-sm { box-shadow: var(--shadow-light) !important; }
+.shadow { box-shadow: var(--shadow-medium) !important; }
+.shadow-lg { box-shadow: var(--shadow-large) !important; }
+
+/* Forms */
+.form-control, .form-select {
+    border: 1px solid var(--color-border);
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--color-gold-primary);
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+}
+.form-check-input:checked {
+    background-color: var(--color-gold-primary);
+    border-color: var(--color-gold-primary);
+}
+.form-label {
+    color: var(--color-text-dark);
+    font-weight: 600;
+}
+.invalid-feedback {
+    color: var(--color-error);
+}
+.form-control.is-invalid {
+    border-color: var(--color-error);
+}
+.form-control.is-valid {
+    border-color: var(--color-success);
+}
+.form-check-input.is-invalid ~ .form-check-label {
+    color: var(--color-error);
+}
+.form-check-input.is-valid ~ .form-check-label {
+    color: var(--color-success);
+}
+
+/* Cart */
+.bg-gold-light {
+    background-color: var(--color-bg-light) !important;
+}
+.cart-summary .card {
+    border: 2px solid var(--color-gold-primary);
+}
+
+/* Footer */
+.footer-logo .logo-img-footer {
+    border-color: var(--color-gold-secondary);
+}
+.footer-bottom .fa-gem {
+    color: var(--color-gold-secondary) !important;
+}
+footer .text-warning {
+    color: var(--color-gold-secondary) !important;
+}
+footer .border-warning {
+    border-color: var(--color-gold-secondary) !important;
+}
+footer a {
+    color: #FFFBF0 !important; /* Lighter cream for footer links */
+}
+footer a:hover {
+    color: var(--color-gold-secondary) !important;
+}
+
+/* 7. SPA & Modal Styling (from your script.js) */
+.page-section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+    min-height: 70vh;
+}
+.page-section.active-page {
+    display: block !important; /* Use !important to override inline style from JS */
+}
+.page-section.visible {
+    opacity: 1;
+}
+/* Ensure initial page loads correctly */
+.page-section.active-page:not(.visible) {
+     display: block !important; /* Override inline style='none' on load */
+     opacity: 1;
+}
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    color: var(--color-text-light);
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-large);
+    z-index: 2000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    max-width: 400px;
+    font-weight: 600;
+}
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.toast.success {
+    background: linear-gradient(135deg, #5CB85C, #4A9A4A);
+    border: 2px solid #8ADE8A;
+}
+.toast.error {
+    background: linear-gradient(135deg, #D9534F, #C9302C);
+    border: 2px solid #ECA4A1;
+}
+.toast.info {
+    background: linear-gradient(135deg, #5bc0de, #31b0d5);
+    border: 2px solid #8EDFF5;
+}
+
+/* Modal */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(74, 42, 0, 0.5); /* Dark brown overlay */
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+    visibility: hidden; /* Added for better transition */
+}
+.modal-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: var(--color-bg-surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-large);
+    max-width: 600px;
+    width: 90%;
+    border: 2px solid var(--color-gold-primary);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.modal-backdrop.active .modal {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    background: linear-gradient(135deg, var(--color-bg-light), #FFF8DC);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-title {
+    margin: 0;
+    color: var(--color-text-dark);
+}
+.modal-close {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 300;
+    color: var(--color-text-dark-secondary);
+    cursor: pointer;
+    padding: 0;
+}
+.modal-close:hover {
+    color: var(--color-error);
+}
+
+.modal-body {
+    padding: 1.5rem 2rem;
+    color: var(--color-text-dark-secondary);
+    overflow-y: auto;
+}
+.modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg-light);
+    display: flex;
+    justify-content: center;
+}
+
+/* Loading spinner for buttons */
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+}
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 50%;
+    left: 50%;
+    margin-left: -0.75rem;
+    margin-top: -0.75rem;
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-top-color: var(--color-text-light);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+/* Spinner for outline/secondary buttons */
+.btn-outline-primary.btn-loading::after,
+.btn-outline-secondary.btn-loading::after {
+    border-color: rgba(74, 42, 0, 0.4);
+    border-top-color: var(--color-text-dark);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Menu Item Animations */
+.item {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
