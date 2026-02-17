@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Learning Journey - LearnScape</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #8b5cf6;
+    --accent-color: #ec4899;
+    --dark-bg: #0f172a;
+    --card-bg: #1e293b;
+    --card-hover: #334155;
+    --text-light: #e2e8f0;
+    --text-muted: #94a3b8;
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+/* Animated Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Gradient Text Utility */
+.gradient-text {
+    background: var(--gradient-1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Header */
+.navbar {
+    background: rgba(15, 23, 42, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-light) !important;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-1);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 80%;
+    left: 10%;
+}
+
+/* Page Header with Animation */
+.page-header {
+    padding: 6rem 0 3rem;
+    text-align: center;
+    position: relative;
+}
+
+.page-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    animation: fadeInUp 0.8s ease;
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    animation: fadeInUp 0.8s ease 0.2s backwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stats Overview Cards */
+.stats-section {
+    margin: 3rem 0;
+    animation: fadeInUp 0.8s ease 0.4s backwards;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.stat-card:hover::before {
+    transform: scaleX(1);
+}
+
+.stat-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: var(--gradient-1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0.5rem 0;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* Progress Circles Section */
+.progress-section {
+    margin: 5rem 0;
+    animation: fadeInUp 0.8s ease 0.6s backwards;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.progress-circles-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.progress-circle-wrapper {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.progress-circle-wrapper:hover {
+    transform: scale(1.1);
+}
+
+.progress-circle {
+    position: relative;
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+}
+
+.progress-circle svg {
+    transform: rotate(-90deg);
+}
+
+.progress-circle circle {
+    fill: none;
+    stroke-width: 10;
+    stroke-linecap: round;
+}
+
+.progress-circle .bg {
+    stroke: rgba(255, 255, 255, 0.08);
+}
+
+.progress-circle .progress {
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+    filter: drop-shadow(0 0 10px currentColor);
+}
+
+.progress-circle .value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+.progress-circle .subtitle {
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.progress-label {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Color variants for progress circles */
+.progress-frontend .progress { stroke: #667eea; }
+.progress-backend .progress { stroke: #f5576c; }
+.progress-design .progress { stroke: #00f2fe; }
+
+/* Timeline Section */
+.timeline-section {
+    margin: 5rem 0;
+    animation: fadeInUp 0.8s ease 0.8s backwards;
+}
+
+.timeline {
+    position: relative;
+    margin: 3rem 0;
+    padding-left: 3rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: slideInLeft 0.6s ease forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.4s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
+.timeline-item:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    width: 20px;
+    height: 20px;
+    background: var(--dark-bg);
+    border: 4px solid var(--primary-color);
+    border-radius: 50%;
+    top: 5px;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover::before {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 8px rgba(99, 102, 241, 0.3);
+}
+
+.timeline-content {
+    padding-left: 3rem;
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 1.5rem 1.5rem 1.5rem 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    background: var(--card-hover);
+    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+.timeline-content h5 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.timeline-content p {
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-date {
+    display: inline-block;
+    background: rgba(99, 102, 241, 0.2);
+    color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.timeline-action {
+    margin-top: 1rem;
+}
+
+.btn-timeline {
+    background: var(--gradient-1);
+    border: none;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-timeline:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* Achievements Section */
+.achievements-section {
+    margin: 5rem 0;
+    animation: fadeInUp 0.8s ease 1s backwards;
+}
+
+.achievement-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-1);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.achievement-card:hover::before {
+    opacity: 0.1;
+}
+
+.achievement-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(99, 102, 241, 0.3);
+    border-color: rgba(99, 102, 241, 0.5);
+}
+
+.achievement-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.achievement-card:nth-child(1) .achievement-icon { color: #fbbf24; animation-delay: 0s; }
+.achievement-card:nth-child(2) .achievement-icon { color: #a78bfa; animation-delay: 0.5s; }
+.achievement-card:nth-child(3) .achievement-icon { color: #10b981; animation-delay: 1s; }
+.achievement-card:nth-child(4) .achievement-icon { color: #f472b6; animation-delay: 1.5s; }
+.achievement-card:nth-child(5) .achievement-icon { color: #3b82f6; animation-delay: 2s; }
+.achievement-card:nth-child(6) .achievement-icon { color: #ef4444; animation-delay: 2.5s; }
+
+.achievement-card h5 {
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+.achievement-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+}
+
+.btn-achievement {
+    background: rgba(99, 102, 241, 0.2);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-achievement:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+}
+
+/* Call to Action Section */
+.cta-section {
+    margin: 5rem 0 3rem;
+    padding: 4rem 0;
+    text-align: center;
+    animation: fadeInUp 0.8s ease 1.2s backwards;
+}
+
+.cta-card {
+    background: var(--gradient-1);
+    border-radius: 25px;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+.cta-card h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-card p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-cta {
+    background: white;
+    color: var(--primary-color);
+    padding: 1rem 2.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-title { font-size: 2.5rem; }
+    .page-subtitle { font-size: 1rem; }
+    
+    .stat-card { padding: 1.5rem; }
+    .stat-value { font-size: 2rem; }
+    
+    .progress-circle {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .progress-circles-container {
+        gap: 2rem;
+    }
+    
+    .timeline {
+        padding-left: 2rem;
+    }
+    
+    .timeline-content {
+        padding: 1rem 1rem 1rem 2rem;
+    }
+    
+    .achievement-card {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cta-card {
+        padding: 3rem 1.5rem;
+    }
+    
+    .cta-card h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-title { font-size: 2rem; }
+    .section-title { font-size: 1.8rem; }
+    
+    .progress-circle {
+        width: 110px;
+        height: 110px;
+    }
+    
+    .progress-circle .value {
+        font-size: 1.5rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+<div class="container">
+<a class="navbar-brand gradient-text" href="index.html"><i class="fas fa-map-marked-alt"></i> LearnScape</a>
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="roadmaps.html">Roadmaps</a></li>
+<li class="nav-item"><a class="nav-link active" href="my-journey.html">My Journey</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<section class="page-header">
+<div class="container">
+<h1 class="page-title gradient-text">My Learning Journey</h1>
+<p class="page-subtitle">Track your progress, celebrate milestones, and keep growing</p>
+</div>
+</section>
+
+<!-- Stats Overview -->
+<section class="stats-section">
+<div class="container">
+<div class="row g-4">
+<div class="col-md-3 col-sm-6">
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+        <div class="stat-value">24</div>
+        <div class="stat-label">Courses Completed</div>
+    </div>
+</div>
+<div class="col-md-3 col-sm-6">
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+        <div class="stat-value">156</div>
+        <div class="stat-label">Hours Learned</div>
+    </div>
+</div>
+<div class="col-md-3 col-sm-6">
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+        <div class="stat-value">12</div>
+        <div class="stat-label">Achievements</div>
+    </div>
+</div>
+<div class="col-md-3 col-sm-6">
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-fire"></i></div>
+        <div class="stat-value">45</div>
+        <div class="stat-label">Day Streak</div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Progress Circles -->
+<section class="progress-section">
+<div class="container">
+<h2 class="section-title gradient-text">Skill Proficiency</h2>
+<div class="progress-circles-container">
+<div class="progress-circle-wrapper progress-frontend">
+    <div class="progress-circle">
+        <svg width="160" height="160">
+            <circle class="bg" r="70" cx="80" cy="80"></circle>
+            <circle class="progress" r="70" cx="80" cy="80" data-progress="75"></circle>
+        </svg>
+        <div class="value">75%</div>
+        <div class="subtitle">Complete</div>
+    </div>
+    <p class="progress-label">Frontend Development</p>
+</div>
+<div class="progress-circle-wrapper progress-backend">
+    <div class="progress-circle">
+        <svg width="160" height="160">
+            <circle class="bg" r="70" cx="80" cy="80"></circle>
+            <circle class="progress" r="70" cx="80" cy="80" data-progress="60"></circle>
+        </svg>
+        <div class="value">60%</div>
+        <div class="subtitle">Complete</div>
+    </div>
+    <p class="progress-label">Backend Development</p>
+</div>
+<div class="progress-circle-wrapper progress-design">
+    <div class="progress-circle">
+        <svg width="160" height="160">
+            <circle class="bg" r="70" cx="80" cy="80"></circle>
+            <circle class="progress" r="70" cx="80" cy="80" data-progress="85"></circle>
+        </svg>
+        <div class="value">85%</div>
+        <div class="subtitle">Complete</div>
+    </div>
+    <p class="progress-label">UI/UX Design</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Timeline -->
+<section class="timeline-section">
+<div class="container">
+<h2 class="section-title gradient-text">Learning Milestones</h2>
+<div class="timeline">
+<div class="timeline-item">
+    <div class="timeline-content">
+        <h5><i class="fas fa-code me-2"></i>Completed HTML & CSS Mastery</h5>
+        <p>Finished comprehensive course covering modern HTML5 and CSS3, including Flexbox, Grid, and responsive design principles.</p>
+        <span class="timeline-date"><i class="far fa-calendar me-1"></i>January 2025</span>
+        <div class="timeline-action">
+            <button class="btn-timeline"><i class="fas fa-redo-alt"></i> Revisit Course</button>
+        </div>
+    </div>
+</div>
+<div class="timeline-item">
+    <div class="timeline-content">
+        <h5><i class="fab fa-js-square me-2"></i>JavaScript Fundamentals</h5>
+        <p>Mastered core JavaScript concepts including ES6+, async/await, DOM manipulation, and built 5 interactive projects.</p>
+        <span class="timeline-date"><i class="far fa-calendar me-1"></i>February 2025</span>
+        <div class="timeline-action">
+            <button class="btn-timeline"><i class="fas fa-redo-alt"></i> Revisit Course</button>
+        </div>
+    </div>
+</div>
+<div class="timeline-item">
+    <div class="timeline-content">
+        <h5><i class="fas fa-paint-brush me-2"></i>UI/UX Design Principles</h5>
+        <p>Learned user-centered design, prototyping with Figma, and created wireframes for 8 real-world applications.</p>
+        <span class="timeline-date"><i class="far fa-calendar me-1"></i>March 2025</span>
+        <div class="timeline-action">
+            <button class="btn-timeline"><i class="fas fa-redo-alt"></i> Revisit Course</button>
+        </div>
+    </div>
+</div>
+<div class="timeline-item">
+    <div class="timeline-content">
+        <h5><i class="fab fa-react me-2"></i>React Development (In Progress)</h5>
+        <p>Currently learning React hooks, state management, and component architecture. 65% complete.</p>
+        <span class="timeline-date"><i class="far fa-calendar me-1"></i>Ongoing</span>
+        <div class="timeline-action">
+            <button class="btn-timeline"><i class="fas fa-play"></i> Continue Learning</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Achievements -->
+<section class="achievements-section">
+<div class="container">
+<h2 class="section-title gradient-text">Achievements & Certificates</h2>
+<div class="row g-4">
+<div class="col-lg-4 col-md-6">
+    <div class="achievement-card">
+        <div class="achievement-icon"><i class="fas fa-award"></i></div>
+        <h5>HTML & CSS Certified</h5>
+        <p>Completed FreeCodeCamp Responsive Web Design Certification</p>
+        <button class="btn-achievement"><i class="fas fa-download"></i> Download Certificate</button>
+    </div>
+</div>
+<div class="col-lg-4 col-md-6">
+    <div class="achievement-card">
+        <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+        <h5>JavaScript Master</h5>
+        <p>Mastered JS fundamentals and completed 20+ coding challenges</p>
+        <button class="btn-achievement"><i class="fas fa-download"></i> Download Certificate</button>
+    </div>
+</div>
+<div class="col-lg-4 col-md-6">
+    <div class="achievement-card">
+        <div class="achievement-icon"><i class="fas fa-star"></i></div>
+        <h5>UI/UX Explorer</h5>
+        <p>Designed and prototyped 8 user interfaces with Figma</p>
+        <button class="btn-achievement"><i class="fas fa-download"></i> Download Certificate</button>
+    </div>
+</div>
+<div class="col-lg-4 col-md-6">
+    <div class="achievement-card">
+        <div class="achievement-icon"><i class="fas fa-rocket"></i></div>
+        <h5>Project Builder</h5>
+        <p>Built and deployed 10 complete web projects from scratch</p>
+        <button class="btn-achievement"><i class="fas fa-eye"></i> View Projects</button>
+    </div>
+</div>
+<div class="col-lg-4 col-md-6">
+    <div class="achievement-card">
+        <div class="achievement-icon"><i class="fas fa-fire-alt"></i></div>
+        <h5>Consistency Champion</h5>
+        <p>Maintained a 45-day learning streak without breaks</p>
+        <button class="btn-achievement"><i class="fas fa-chart-line"></i> View Stats</button>
+    </div>
+</div>
+<div class="col-lg-4 col-md-6">
+    <div class="achievement-card">
+        <div class="achievement-icon"><i class="fas fa-users"></i></div>
+        <h5>Community Helper</h5>
+        <p>Helped 50+ learners in the community forums</p>
+        <button class="btn-achievement"><i class="fas fa-comments"></i> Join Community</button>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Call to Action -->

@@ -36,7 +36,7 @@ body{
     box-shadow: 0 18px 30px rgba(0,0,0,0.2);
 }
 
-/* Soft animated gradient overlay */
+/* Shine effect */
 .student-card::before{
     content:"";
     position:absolute;
@@ -85,28 +85,29 @@ body{
 
 <script>
 
+// Students Data with URLs
 const students = [
- {name:"Samyak Anil Kedari", enroll:"ADT24SOCBD209", div:"TYSMAD"},
- {name:"Shrinivas Ashok Sherikar", enroll:"ADT23SOCB1610", div:"TYSMAD"},
- {name:"Durvankur Sambhaji Devikar", enroll:"ADT23SOCB1628", div:"TYSMAD"},
- {name:"Sanskrti Singh", enroll:"ADT23SOCB1557", div:"TYSMAD"},
- {name:"Riya Mahendra Gandhi", enroll:"ADT23SOCB1548", div:"TYSMAD"},
- {name:"Asad Ahmed Nadaf", enroll:"ADT23SOCB1511", div:"TYSMAD"},
- {name:"Attharv Amar Banage", enroll:"ADT23SOCB1514", div:"TYSMAD"},
- {name:"Chanakshi Prabhakar Bedse", enroll:"ADT23SOCB1517", div:"TYSMAD"},
+ {name:"Samyak Anil Kedari", enroll:"ADT24SOCBD209", div:"TYSMAD", url:"D209/index.html"},
+ {name:"Shrinivas Ashok Sherikar", enroll:"ADT23SOCB1610", div:"TYSMAD", url:"1610/index.html"},
+ {name:"Durvankur Sambhaji Devikar", enroll:"ADT23SOCB1628", div:"TYSMAD", url:"1628/index.html"},
+ {name:"Sanskrti Singh", enroll:"ADT23SOCB1557", div:"TYSMAD", url:"1557/index.html"},
+ {name:"Riya Mahendra Gandhi", enroll:"ADT23SOCB1548", div:"TYSMAD", url:"1548/index.html"},
+ {name:"Asad Ahmed Nadaf", enroll:"ADT23SOCB1511", div:"TYSMAD", url:"1511/index.html"},
+ {name:"Attharv Amar Banage", enroll:"ADT23SOCB1514", div:"TYSMAD", url:"1514/index.html"},
+ {name:"Chanakshi Prabhakar Bedse", enroll:"ADT23SOCB1517", div:"TYSMAD", url:"1517/index.html"},
 
- {name:"Harsh Anand Pandey", enroll:"ADT23SOCB1521", div:"TYSMAD"},
- {name:"Ibrahim Husain Poonawala", enroll:"ADT23SOCB1523", div:"TYSMAD"},
- {name:"Prathmesh Waghmare", enroll:"ADT23SOCB1545", div:"TYSMAD"},
- {name:"Rahul Mangesh Joshi", enroll:"ADT24SOCBD205", div:"TYSMAD"},
- {name:"Krutik Tejani", enroll:"ADT24SOCBD202", div:"TYSMAD"},
- {name:"Isha Prem Yadav", enroll:"ADT23SOCB1632", div:"TYSMAD"},
- {name:"Tanmay Sudhir Shinde", enroll:"ADT23SOCB1617", div:"TYSMAD"},
- {name:"Varad Vikas Mandhare", enroll:"ADT23SOCB1574", div:"TYSMAD"},
- {name:"Suhasini Somnath Nanaware", enroll:"ADT23SOCB1566", div:"TYSMAD"}
+ {name:"Harsh Anand Pandey", enroll:"ADT23SOCB1521", div:"TYSMAD", url:"1521/index.html"},
+ {name:"Ibrahim Husain Poonawala", enroll:"ADT23SOCB1523", div:"TYSMAD", url:"1523/index.html"},
+ {name:"Prathmesh Waghmare", enroll:"ADT23SOCB1545", div:"TYSMAD", url:"1545/index.html"},
+ {name:"Rahul Mangesh Joshi", enroll:"ADT24SOCBD205", div:"TYSMAD", url:"D205/index.html"},
+ {name:"Krutik Tejani", enroll:"ADT24SOCBD202", div:"TYSMAD", url:"D202/index.html"},
+ {name:"Isha Prem Yadav", enroll:"ADT23SOCB1632", div:"TYSMAD", url:"1632/index.html"},
+ {name:"Tanmay Sudhir Shinde", enroll:"ADT23SOCB1617", div:"TYSMAD", url:"1617/index.html"},
+ {name:"Varad Vikas Mandhare", enroll:"ADT23SOCB1574", div:"TYSMAD", url:"1574/index.html"},
+ {name:"Suhasini Somnath Nanaware", enroll:"ADT23SOCB1566", div:"TYSMAD", url:"1566/index.html"}
 ];
 
-
+// Light pastel colors
 const colors = [
 "#FFE5EC","#E0F7FA","#E8F5E9","#FFF9C4","#EDE7F6",
 "#FCE4EC","#E1F5FE","#F3E5F5","#FFF3E0","#E0F2F1"
@@ -114,13 +115,14 @@ const colors = [
 
 const container = document.getElementById("studentContainer");
 
-students.forEach((student, index) => {
+// Render cards
+students.forEach((student) => {
 
     const color = colors[Math.floor(Math.random()*colors.length)];
 
     container.innerHTML += `
         <div class="col-md-4 col-lg-3">
-            <a href="student${index+1}.html" class="text-decoration-none text-dark">
+            <a href="${student.url}" class="text-decoration-none text-dark">
                 <div class="student-card" style="background:${color}">
                     <h5 class="title">${student.name}</h5>
                     <p class="mb-2">Enrollment: <strong>${student.enroll}</strong></p>
