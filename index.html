@@ -28,6 +28,7 @@ body{
     transition: all 0.35s ease;
     position: relative;
     overflow:hidden;
+    animation: fadeIn 0.6s ease forwards;
 }
 
 /* Floating animation */
@@ -67,6 +68,12 @@ body{
     border-radius:12px;
 }
 
+/* NEW: Fade Animation */
+@keyframes fadeIn {
+    from { opacity:0; transform: translateY(20px); }
+    to { opacity:1; transform: translateY(0); }
+}
+
 </style>
 </head>
 
@@ -77,6 +84,14 @@ body{
     <div class="text-center mb-5 text-white">
         <h1 class="header-title">Student Directory</h1>
         <p>Click a card to view details</p>
+
+        <!-- NEW: Total Student Count -->
+        <h6 id="studentCount" class="mt-2"></h6>
+
+        <!-- NEW: Search Bar -->
+        <div class="mt-3">
+            <input type="text" id="searchInput" class="form-control w-50 mx-auto" placeholder="Search student by name...">
+        </div>
     </div>
 
     <div class="row g-4" id="studentContainer"></div>
@@ -95,7 +110,6 @@ const students = [
  {name:"Asad Ahmed Nadaf", enroll:"ADT23SOCB1511", div:"TYSMAD", url:"1511/index.html"},
  {name:"Attharv Amar Banage", enroll:"ADT23SOCB1514", div:"TYSMAD", url:"1514/index.html"},
  {name:"Chanakshi Prabhakar Bedse", enroll:"ADT23SOCB1517", div:"TYSMAD", url:"1517/index.html"},
-
  {name:"Harsh Anand Pandey", enroll:"ADT23SOCB1521", div:"TYSMAD", url:"1521/index.html"},
  {name:"Ibrahim Husain Poonawala", enroll:"ADT23SOCB1523", div:"TYSMAD", url:"1523/index.html"},
  {name:"Prathmesh Waghmare", enroll:"ADT23SOCB1545", div:"TYSMAD", url:"1545/index.html"},
@@ -114,23 +128,40 @@ const colors = [
 ];
 
 const container = document.getElementById("studentContainer");
+const countDisplay = document.getElementById("studentCount");
 
-// Render cards
-students.forEach((student) => {
+// NEW: Display total count
+countDisplay.innerHTML = `Total Students: ${students.length}`;
 
-    const color = colors[Math.floor(Math.random()*colors.length)];
+function renderStudents(studentList){
+    container.innerHTML = "";
+    studentList.forEach((student) => {
+        const color = colors[Math.floor(Math.random()*colors.length)];
 
-    container.innerHTML += `
-        <div class="col-md-4 col-lg-3">
-            <a href="${student.url}" class="text-decoration-none text-dark">
-                <div class="student-card" style="background:${color}">
-                    <h5 class="title">${student.name}</h5>
-                    <p class="mb-2">Enrollment: <strong>${student.enroll}</strong></p>
-                    <span class="badge bg-dark badge-division">Division ${student.div}</span>
-                </div>
-            </a>
-        </div>
-    `;
+        container.innerHTML += `
+            <div class="col-md-4 col-lg-3">
+                <a href="${student.url}" class="text-decoration-none text-dark">
+                    <div class="student-card" style="background:${color}">
+                        <h5 class="title">${student.name}</h5>
+                        <p class="mb-2">Enrollment: <strong>${student.enroll}</strong></p>
+                        <span class="badge bg-dark badge-division">Division ${student.div}</span>
+                    </div>
+                </a>
+            </div>
+        `;
+    });
+}
+
+// Initial render
+renderStudents(students);
+
+// NEW: Search functionality
+document.getElementById("searchInput").addEventListener("keyup", function(){
+    const searchValue = this.value.toLowerCase();
+    const filtered = students.filter(student =>
+        student.name.toLowerCase().includes(searchValue)
+    );
+    renderStudents(filtered);
 });
 
 </script>
