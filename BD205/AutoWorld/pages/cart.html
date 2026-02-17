@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - AutoHub Premium Pre-Owned Cars</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --gold-color: #e94560;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --light-bg: #f8f9fa;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--light-bg);
+        }
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            padding: 15px 0;
+        }
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text-light) !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .navbar-nav .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 8px;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+        .navbar-nav .nav-link:hover {
+            color: var(--gold-color) !important;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        .navbar-nav .nav-link.active {
+            background: rgba(233, 69, 96, 0.2);
+            color: var(--gold-color) !important;
+        }
+        .badge { font-size: 0.6rem; padding: 0.3em 0.5em; border-radius: 50%; }
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            color: var(--text-light);
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff08" points="0,200 1000,0 1000,1000 0,800"/></svg>');
+            z-index: 1;
+        }
+        .page-header-content { position: relative; z-index: 2; text-align: center; }
+        .page-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+        .page-subtitle { font-size: 1.3rem; opacity: 0.9; animation: fadeInUp 1s ease-out 0.3s both; }
+        .main-content { padding: 80px 0; }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--gold-color), #ff6b8a);
+            border-radius: 2px;
+        }
+        .summary-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        .summary-card:hover { transform: translateY(-5px); box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+        .summary-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--gold-color), #ff6b8a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+        .summary-number { font-size: 2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 5px; }
+        .summary-label { color: #666; font-weight: 500; }
+        .car-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            border: 2px solid transparent;
+        }
+        .car-card:hover { transform: translateY(-5px); box-shadow: 0 20px 60px rgba(0,0,0,0.15); border-color: var(--gold-color); }
+        .car-image {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .car-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+        }
+        .car-image i { position: relative; z-index: 2; }
+        .car-details { padding: 25px; }
+        .car-title { font-size: 1.3rem; font-weight: 700; color: var(--primary-color); margin-bottom: 10px; }
+        .car-price { font-size: 1.4rem; font-weight: 700; color: var(--gold-color); margin-bottom: 15px; }
+        .car-info { color: #666; margin-bottom: 15px; font-size: 0.9rem; }
+        .car-features { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        .feature-badge {
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .cart-table { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); margin-bottom: 30px; }
+        .table { margin-bottom: 0; }
+        .table thead th {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 20px 15px;
+            font-weight: 600;
+        }
+        .table tbody td { padding: 20px 15px; border-bottom: 1px solid #e9ecef; vertical-align: middle; }
+        .table tbody tr:last-child td { border-bottom: none; }
+        .table tbody tr:hover { background: rgba(233, 69, 96, 0.05); }
+        .btn-action {
+            padding: 8px 16px;
+            font-weight: 600;
+            border-radius: 20px;
+            margin: 2px;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.9rem;
+        }
+        .btn-remove { background: linear-gradient(45deg, var(--danger-color), #e74c3c); color: white; }
+        .btn-remove:hover {
+            background: linear-gradient(45deg, #c82333, #b02a37);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
+            color: white;
+        }
+        .btn-save { background: linear-gradient(45deg, var(--warning-color), #f39c12); color: white; }
+        .btn-save:hover {
+            background: linear-gradient(45deg, #e0a800, #d35400);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+            color: white;
+        }
+        .btn-view { background: linear-gradient(45deg, var(--accent-color), var(--secondary-color)); color: white; }
+        .btn-view:hover {
+            background: linear-gradient(45deg, var(--gold-color), #ff6b8a);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(15, 52, 96, 0.3);
+            color: white;
+        }
+        .checkout-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 100px;
+        }
+        .checkout-title { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 20px; }
+        .price-row { display: flex; justify-content: space-between; padding: 10px 0; color: #666; }
+        .total-row {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            border-top: 2px solid var(--gold-color);
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+        .btn-checkout {
+            background: linear-gradient(45deg, var(--success-color), #20c997);
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .btn-checkout:hover {
+            background: linear-gradient(45deg, #218838, #17a2b8);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
+            color: white;
+        }
+        .btn-continue {
+            background: transparent;
+            border: 2px solid var(--gold-color);
+            color: var(--gold-color);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .btn-continue:hover {
+            background: var(--gold-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
+        }
+        .empty-cart { text-align: center; padding: 60px 0; }
+        .empty-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #e9ecef, #dee2e6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #6c757d;
+            margin: 0 auto 30px;
+        }
+        .empty-title { font-size: 2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 15px; }
+        .empty-subtitle { color: #666; margin-bottom: 30px; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            .page-title { font-size: 2.5rem; }
+            .checkout-section { position: static; margin-top: 30px; }
+            .navbar-collapse { background: rgba(26, 26, 46, 0.95); padding: 20px; border-radius: 10px; margin-top: 10px; }
+        }
+        @media (max-width: 576px) {
+            .page-header { padding: 120px 0 80px; }
+            .page-title { font-size: 2rem; }
+            .car-image { height: 150px; font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="home.html"><i class="fas fa-car"></i> AutoHub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="inventory.html">Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="financing.html">Financing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cart.html">
+                            <i class="fas fa-shopping-cart me-1"></i>Cart <span class="badge bg-danger ms-1" id="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt me-1"></i>Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-plus me-1"></i>Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 page-header-content">
+                    <h1 class="page-title">Shopping Cart</h1>
+                    <p class="page-subtitle">Review your selected vehicles and proceed to checkout</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="container" id="main-container"></div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Complete car database - matches inventory page
+        const carsData = [
+            {id: 1, brand: 'bmw', model: '3 Series', year: 2019, price: 1525000, mileage: 45000, fuel: 'petrol', bodyType: 'sedan', transmission: 'automatic', features: ['Sunroof', 'Leather', 'Navigation'], badge: 'Certified', gradient: 'linear-gradient(45deg, #667eea, #764ba2)', icon: 'fas fa-car'},
+            {id: 2, brand: 'audi', model: 'A4', year: 2020, price: 1875000, mileage: 32000, fuel: 'petrol', bodyType: 'sedan', transmission: 'automatic', features: ['Quattro', 'LED Lights', 'Premium'], badge: 'Low Miles', gradient: 'linear-gradient(45deg, #f093fb, #f5576c)', icon: 'fas fa-car-side'},
+            {id: 3, brand: 'mercedes', model: 'C-Class', year: 2018, price: 1340000, mileage: 52000, fuel: 'diesel', bodyType: 'sedan', transmission: 'automatic', features: ['AMG Line', 'Panoramic', 'MBUX'], badge: 'Certified', gradient: 'linear-gradient(45deg, #4facfe, #00f2fe)', icon: 'fas fa-car'},
+            {id: 4, brand: 'maruti', model: 'Swift', year: 2021, price: 675000, mileage: 28000, fuel: 'petrol', bodyType: 'hatchback', transmission: 'manual', features: ['Touchscreen', 'ABS', 'Airbags'], badge: 'Best Seller', gradient: 'linear-gradient(45deg, #fa709a, #fee140)', icon: 'fas fa-car'},
+            {id: 5, brand: 'hyundai', model: 'Creta', year: 2020, price: 1125000, mileage: 35000, fuel: 'petrol', bodyType: 'suv', transmission: 'automatic', features: ['Sunroof', 'Wireless Charging', 'Cruise Control'], badge: 'Popular', gradient: 'linear-gradient(45deg, #a8edea, #fed6e3)', icon: 'fas fa-car-side'},
+            {id: 6, brand: 'honda', model: 'City', year: 2019, price: 825000, mileage: 42000, fuel: 'petrol', bodyType: 'sedan', transmission: 'cvt', features: ['Honda Sensing', 'Lane Watch', 'Cruise Control'], badge: 'Reliable', gradient: 'linear-gradient(45deg, #ffecd2, #fcb69f)', icon: 'fas fa-car'},
+            {id: 7, brand: 'toyota', model: 'Innova Crysta', year: 2020, price: 1450000, mileage: 38000, fuel: 'diesel', bodyType: 'suv', transmission: 'manual', features: ['Captain Seats', '7 Seater', 'Dual AC'], badge: 'Family Car', gradient: 'linear-gradient(45deg, #667eea, #764ba2)', icon: 'fas fa-car-side'},
+            {id: 8, brand: 'tata', model: 'Harrier', year: 2021, price: 1175000, mileage: 25000, fuel: 'diesel', bodyType: 'suv', transmission: 'automatic', features: ['Panoramic Sunroof', 'JBL Audio', '6 Airbags'], badge: 'Safety First', gradient: 'linear-gradient(45deg, #f093fb, #f5576c)', icon: 'fas fa-car'}
+        ];
+
+        // Cart items storage - synced via URL parameters
+        let cartItems = [];
+        let wishlistItems = [];
+
+        // Initialize cart from URL parameter
+        function initializeCart() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const cartParam = urlParams.get('cart');
+            
+            if (cartParam) {
+                try {
+                    cartItems = JSON.parse(decodeURIComponent(cartParam));
+                } catch (e) {
+                    cartItems = [];
+                }
+            }
+            
+            CartManager.updateCartCount();
+        }
+
+        // Cart Manager object
+        const CartManager = {
+            getCart: () => cartItems,
+            
+            getCartItems: function() {
+                return this.getCart().map(id => carsData.find(car => car.id === id)).filter(Boolean);
+            },
+            
+            saveCart: function(cart) {
+                cartItems = cart;
+                this.updateCartCount();
+                this.updateInventoryLink();
+            },
+            
+            updateInventoryLink: function() {
+                const cartData = encodeURIComponent(JSON.stringify(cartItems));
+                document.querySelectorAll('a[href="inventory.html"]').forEach(link => {
+                    link.href = `inventory.html?cart=${cartData}`;
+                });
+            },
+            
+            removeFromCart: function(carId) {
+                const cart = this.getCart();
+                const car = carsData.find(c => c.id === carId);
+                const newCart = cart.filter(id => id !== carId);
+                this.saveCart(newCart);
+                if (car) {
+                    this.showNotification(`${car.brand.toUpperCase()} ${car.model} removed from cart`, 'warning');
+                }
+                return true;
+            },
+            
+            saveForLater: function(carId) {
+                const car = carsData.find(c => c.id === carId);
+                if (car && this.getCart().includes(carId)) {
+                    this.removeFromCart(carId);
+                    if (!wishlistItems.includes(carId)) {
+                        wishlistItems.push(carId);
+                        window.wishlistItems = wishlistItems;
+                    }
+                    this.showNotification(`${car.brand.toUpperCase()} ${car.model} saved for later`, 'success');
+                    return true;
+                }
+                return false;
+            },
+            
+            getCartTotal: function() {
+                return this.getCartItems().reduce((total, car) => total + car.price, 0);
+            },
+            
+            getCartCount: function() {
+                return this.getCart().length;
+            },
+            
+            updateCartCount: function() {
+                const count = this.getCartCount();
+                document.querySelectorAll('#cart-count').forEach(badge => {
+                    badge.textContent = count;
+                    badge.style.display = count === 0 ? 'none' : 'inline-block';
+                });
+            },
+            
+            formatPrice: price => `₹${(price / 100000).toFixed(2)}L`,
+            
+            showNotification: function(message, type = 'info') {
+                const n = document.createElement('div');
+                n.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+                n.style.cssText = 'top: 100px; right: 20px; z-index: 9999; min-width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+                n.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button>`;
+                document.body.appendChild(n);
+                setTimeout(() => { 
+                    if (n.parentNode) { 
+                        n.classList.remove('show'); 
+                        setTimeout(() => n.remove(), 150); 
+                    } 
+                }, 4000);
+            }
+        };
+
+        function loadCartItems() {
+            const cart = CartManager.getCartItems();
+            const container = document.getElementById('main-container');
+            
+            if (cart.length === 0) { 
+                showEmptyCart(); 
+                return; 
+            }
+            
+            container.innerHTML = `
+                <div class="row mb-5">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="summary-card text-center">
+                            <div class="summary-icon"><i class="fas fa-car"></i></div>
+                            <div class="summary-number">${cart.length}</div>
+                            <div class="summary-label">Cars Selected</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="summary-card text-center">
+                            <div class="summary-icon"><i class="fas fa-dollar-sign"></i></div>
+                            <div class="summary-number">${CartManager.formatPrice(CartManager.getCartTotal())}</div>
+                            <div class="summary-label">Total Value</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="summary-card text-center">
+                            <div class="summary-icon"><i class="fas fa-heart"></i></div>
+                            <div class="summary-number">${wishlistItems.length}</div>
+                            <div class="summary-label">Saved for Later</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="summary-card text-center">
+                            <div class="summary-icon"><i class="fas fa-clock"></i></div>
+                            <div class="summary-number">24hrs</div>
+                            <div class="summary-label">Price Hold</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h2 class="section-title">Your Selected Vehicles</h2>
+                        <div class="cart-table d-none d-md-block">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Vehicle</th>
+                                            <th>Details</th>
+                                            <th>Price</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart-table-body"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="d-md-none" id="mobile-cart-items"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="checkout-section">
+                            <h3 class="checkout-title">Order Summary</h3>
+                            <div class="price-row">
+                                <span>Subtotal (${cart.length} items):</span>
+                                <span>${CartManager.formatPrice(CartManager.getCartTotal())}</span>
+                            </div>
+                            <div class="price-row">
+                                <span>Registration Fee:</span>
+                                <span>₹0.25L</span>
+                            </div>
+                            <div class="price-row">
+                                <span>Insurance (Estimated):</span>
+                                <span>₹0.15L</span>
+                            </div>
+                            <div class="total-row d-flex justify-content-between">
+                                <span>Total:</span>
+                                <span>${CartManager.formatPrice(CartManager.getCartTotal() + 40000)}</span>
+                            </div>
+                            <button class="btn btn-checkout" onclick="proceedToCheckout()">
+                                <i class="fas fa-lock me-2"></i>Proceed to Checkout
+                            </button>
+                            <button class="btn btn-continue" onclick="window.location.href='inventory.html'">
+                                <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            populateCartItems(cart);
+        }
+
+        function populateCartItems(cart) {
+            const tb = document.getElementById('cart-table-body');
+            const mc = document.getElementById('mobile-cart-items');
+            tb.innerHTML = '';
+            mc.innerHTML = '';
+            
+            cart.forEach(car => {
+                // Desktop table row
+                const tr = document.createElement('tr');
+                tr.setAttribute('data-car-id', car.id);
+                tr.innerHTML = `
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="car-thumbnail me-3" style="width: 80px; height: 60px; background: ${car.gradient}; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                <i class="${car.icon}"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">${car.brand.toUpperCase()} ${car.model} ${car.year}</h6>
+                                <small class="text-muted">${car.bodyType.charAt(0).toUpperCase() + car.bodyType.slice(1)}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <small>
+                            ${(car.mileage / 1000).toFixed(0)}k km<br>
+                            ${car.transmission.charAt(0).toUpperCase() + car.transmission.slice(1)} • ${car.fuel.charAt(0).toUpperCase() + car.fuel.slice(1)}<br>
+                            <span class="badge bg-success">${car.badge}</span>
+                        </small>
+                    </td>
+                    <td><strong class="text-primary">${CartManager.formatPrice(car.price)}</strong></td>
+                    <td>
+                        <button class="btn btn-action btn-view" title="View Details" onclick="viewCarDetails(${car.id})">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-action btn-save" title="Save for Later" onclick="saveCarForLater(${car.id})">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="btn btn-action btn-remove" title="Remove" onclick="removeCarFromCart(${car.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tb.appendChild(tr);
+
+                // Mobile card view
+                const card = document.createElement('div');
+                card.className = 'car-card';
+                card.setAttribute('data-car-id', car.id);
+                card.innerHTML = `
+                    <div class="car-image" style="background: ${car.gradient};">
+                        <i class="${car.icon}"></i>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">${car.brand.toUpperCase()} ${car.model} ${car.year}</h3>
+                        <div class="car-price">${CartManager.formatPrice(car.price)}</div>
+                        <div class="car-info">
+                            <i class="fas fa-road me-2"></i>${(car.mileage / 1000).toFixed(0)}k km | 
+                            <i class="fas fa-gas-pump me-1 ms-2"></i>${car.fuel.charAt(0).toUpperCase() + car.fuel.slice(1)} | 
+                            <i class="fas fa-cog me-1 ms-2"></i>${car.transmission.charAt(0).toUpperCase() + car.transmission.slice(1)}
+                        </div>
+                        <div class="car-features">
+                            ${car.features.map(f => `<span class="feature-badge">${f}</span>`).join('')}
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-action btn-view flex-fill" onclick="viewCarDetails(${car.id})">
+                                <i class="fas fa-eye me-1"></i>View
+                            </button>
+                            <button class="btn btn-action btn-save flex-fill" onclick="saveCarForLater(${car.id})">
+                                <i class="fas fa-heart me-1"></i>Save
+                            </button>
+                            <button class="btn btn-action btn-remove flex-fill" onclick="removeCarFromCart(${car.id})">
+                                <i class="fas fa-trash me-1"></i>Remove
+                            </button>
+                        </div>
+                    </div>
+                `;
+                mc.appendChild(card);
+            });
+        }
+
+        function showEmptyCart() {
+            document.getElementById('main-container').innerHTML = `
+                <div class="col-12">
+                    <div class="empty-cart">
+                        <div class="empty-icon"><i class="fas fa-shopping-cart"></i></div>
+                        <h2 class="empty-title">Your Cart is Empty</h2>
+                        <p class="empty-subtitle">Start adding some amazing cars to your cart!</p>
+                        <a href="inventory.html" class="btn btn-checkout">
+                            <i class="fas fa-car me-2"></i>Browse Inventory
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        function removeCarFromCart(carId) {
+            if (confirm('Remove this car from your cart?')) {
+                CartManager.removeFromCart(carId);
+                document.querySelectorAll(`[data-car-id="${carId}"]`).forEach(el => {
+                    el.style.transition = 'all 0.3s ease';
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateX(-20px)';
+                    setTimeout(() => { 
+                        el.remove(); 
+                        loadCartItems(); 
+                    }, 300);
+                });
+            }
+        }
+
+        function saveCarForLater(carId) {
+            CartManager.saveForLater(carId);
+            document.querySelectorAll(`[data-car-id="${carId}"]`).forEach(el => {
+                el.style.transition = 'all 0.3s ease';
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(-20px)';
+                setTimeout(() => { 
+                    el.remove(); 
+                    loadCartItems(); 
+                }, 300);
+            });
+        }
+
+        function viewCarDetails(carId) {
+            CartManager.showNotification('Viewing car details...', 'info');
+            // In a real app, this would navigate to the car details page
+        }
+
+        function proceedToCheckout() {
+            if (CartManager.getCartCount() === 0) {
+                CartManager.showNotification('Your cart is empty!', 'warning');
+                return;
+            }
+            CartManager.showNotification('Proceeding to checkout...', 'success');
+            // In a real app, this would navigate to checkout page
+            setTimeout(() => {
+                window.location.href = 'checkout.html';
+            }, 1500);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeCart();
+            loadCartItems();
+            
+            // Update inventory link to preserve cart
+            CartManager.updateInventoryLink();
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(26, 26, 46, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
