@@ -1,0 +1,9 @@
+.about-page {
+  width: 100%;
+  min-height: calc(100vh - 70px);/* ✅ Full Screen */
+  background: linear-gradient(135deg, #f8bbd9, #e1bee7); /* Match login BG */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
