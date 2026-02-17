@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "name": "boAt Rockerz 650 Pro",
+    "category": "Headphones",
+    "price": 2499,
+    "image": "assets/img/img1.png",
+    "description": "Wireless Headphone with 80 Hours Playback, Dolby Audio, Touch & Swipe Controls",
+    "specs": {
+      "Used Time": "Up to 80 hours",
+      "Charging Port": "Type C",
+      "Frequency": "20Hz-20KHz",
+      "Charging Time": "Up to 1HR",
+      "Compatibility": "All Bluetooth Devices",
+      "Controlled": "Intuitive Touch Control"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Toshiba Kirabook",
+    "category": "Laptop",
+    "price": 69999,
+    "image": "assets/img/img2.png",
+    "description": "Toshiba's Kirabook with brilliant higher-res screen, powerful components, and a slick design.",
+    "specs": {
+      "CPU": "Quad, 47W",
+      "Graphics": "Intel HD 4400 Microsoft",
+      "Display Size": "13.3\" 2560 X 1440",
+      "Charging Time": "Up to 1HR",
+      "Compatibility": "All Bluetooth Devices",
+      "Touchscreen": "Multi-touch"
+    }
+  },
+  {
+    "id": 3,
+    "name": "HP OmniStudio X Desktop",
+    "category": "Desktop",
+    "price": 84999,
+    "image": "assets/img/img3.png",
+    "description": "Robust, powerful, stable all-in-one desktop with 2x2 MIMO antennas for high performance.",
+    "specs": {
+      "CPU model": "Intel Core Ultra 7",
+      "OS": "Windows 11 Home",
+      "Design": "All in One",
+      "Memory": "32 GB",
+      "Screen Size": "27 Inches",
+      "Compatibility": "All Bluetooth Devices"
+    }
+  }
+  
+]
