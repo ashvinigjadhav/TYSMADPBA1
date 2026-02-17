@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Software & Licensing</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* Page-specific styles */
+    .hero {
+      background: linear-gradient(135deg, #3182ce, #63b3ed);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .software-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .software-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .software-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .software-card i {
+      font-size: 2.5rem;
+      color: #3182ce;
+      margin-bottom: 15px;
+    }
+
+    .software-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .license-price {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #2f855a;
+      margin: 10px 0;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn.buy {
+      background: #2f855a;
+      color: white;
+    }
+
+    .btn.buy:hover {
+      background: #276749;
+    }
+
+    .btn.details {
+      background: #e2e8f0;
+      color: #2d3748;
+      margin-left: 8px;
+    }
+
+    .btn.details:hover {
+      background: #cbd5e0;
+    }
+  </style>
+</head>
+<body>
+
+<header class="top-header">
+  <div class="logo">IT Hardware &amp; Software</div>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search products..." />
+    <button><i class="fas fa-search"></i></button>
+  </div>
+
+  <select class="dropdown" id="categoryFilter">
+    <option value="Category">All</option>
+    <option value="New">New</option>
+    <option value="Used">Used</option>
+  </select>
+
+  <a href="buy-product.html" class="buy-button">Buy</a>
+  <a href="sell-product.html" class="sell-button">Sell</a>
+
+  <select class="dropdown">
+    <option>EN</option>
+    <option>HI</option>
+    <option>MR</option>
+  </select>
+
+  <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+</header>
+
+<!-- Second Navbar -->
+<nav class="second-navbar">
+  <ul class="second-nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="trending.html">Trending</a></li>
+    <li><a href="best-sellers.html">Best Sellers</a></li>
+    <li><a href="software-licensing.html" class="active">Software & Licensing</a></li>
+    <li><a href="new-arrivals.html">New Arrivals</a></li>
+    <li><a href="refurbished.html">Refurbished</a></li>
+    <li><a href="signin.html">Sign In</a></li>
+  </ul>
+</nav>
+
+<main class="content">
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2><i class="fas fa-key"></i> Software & Licensing</h2>
+    <p>Get genuine software, license keys, and subscription plans at the best prices.</p>
+  </section>
+
+  <!-- Software Categories -->
+  <div class="software-grid">
+    <div class="software-card">
+      <i class="fab fa-windows"></i>
+      <h3>Windows 11 Pro</h3>
+      <p>Genuine Windows 11 Pro License Key.</p>
+      <span class="license-price">₹12,000</span>
+      <button class="btn buy">Buy</button>
+      <button class="btn details">Details</button>
+    </div>
+
+    <div class="software-card">
+      <i class="fas fa-briefcase"></i>
+      <h3>Microsoft Office 365</h3>
+      <p>1 Year Subscription with Word, Excel, PowerPoint, and Outlook.</p>
+      <span class="license-price">₹4,999</span>
+      <button class="btn buy">Buy</button>
+      <button class="btn details">Details</button>
+    </div>
+
+    <div class="software-card">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Kaspersky Antivirus</h3>
+      <p>1 Year license for up to 3 devices.</p>
+      <span class="license-price">₹1,200</span>
+      <button class="btn buy">Buy</button>
+      <button class="btn details">Details</button>
+    </div>
+
+    <div class="software-card">
+      <i class="fas fa-cloud"></i>
+      <h3>Adobe Creative Cloud</h3>
+      <p>Full Suite (Photoshop, Illustrator, Premiere Pro & more).</p>
+      <span class="license-price">₹25,000</span>
+      <button class="btn buy">Buy</button>
+      <button class="btn details">Details</button>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>

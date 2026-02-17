@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buy Products - IT Hardware & Software</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .site-footer {
+        background-color: #4B0082; 
+        color: #fff; 
+        text-align: center;
+        padding: 10px 0;
+        font-size: 14px;
+        margin-top: auto;
+        border-top: 3px solid #32CD32; 
+    }
+
+    .site-footer p {
+        margin: 0;
+    }
+
+
+.buy-main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .buy-main h2 {
+      text-align: center;
+      font-size: 2.2em;
+      margin-bottom: 30px;
+      color: var(--purple-main);
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-info h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      color: #222;
+    }
+    .product-info p {
+      flex-grow: 1;
+      font-size: 0.9em;
+      color: #555;
+    }
+    .product-price {
+      font-weight: bold;
+      margin: 10px 0;
+      color: var(--green-accent);
+      font-size: 1.1em;
+    }
+    .add-to-cart {
+      background-color: var(--green-accent);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .add-to-cart:hover {
+      background-color: var(--purple-main);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="top-header">
+    <div class="logo">IT Hardware & Software</div>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Search products..." />
+      <button><i class="fas fa-search"></i></button>
+    </div>
+
+    <select class="dropdown">
+      <option value="all">All</option>
+      <option value="New">New</option>
+      <option value="Used">Used</option>
+    </select>
+
+    <div class="nav-actions">
+      <a href="buy-product.html" class="buy-button">Buy</a>
+      <a href="sell-product.html" class="sell-button">Sell</a>
+
+      <select class="dropdown lang-select">
+        <option>EN</option>
+        <option>HI</option>
+        <option>MR</option>
+      </select>
+
+      <a href="cart.html" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </header>
+
+  <!-- Second Nav -->
+  <nav class="second-navbar">
+    <ul class="second-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="trending.html">Trending</a></li>
+      <li><a href="best sellers.html">Best Sellers</a></li>
+      <li><a href="software-licensing.html">Software & Licensing</a></li>
+      <li><a href="new-arrivals.html">New Arrivals</a></li>
+      <li><a href="refurbished.html">Refurbished</a></li>
+      <li><a href="signin.html">Sign In</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main -->
+  <main class="buy-main">
+    <h2>Available Products</h2>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <img src="assets\img\img12.png" alt="ASUS ROG Strix G18" />
+        <div class="product-info">
+          <h3>ASUS ROG Strix G18 Gaming Laptop</h3>
+          <p>Powerful gaming laptop with Intel i9, RTX 4080, and 32GB RAM.</p>
+          <div class="product-price">₹2,50,000</div>
+          <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="assets\img\img6.png" alt="Z40 Smartwatch" />
+        <div class="product-info">
+          <h3>Z40 Smartwatch</h3>
+          <p>Feature-packed smartwatch with heart rate monitor and GPS.</p>
+          <div class="product-price">₹3,500</div>
+          <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="assets\img\img1.png" alt="boAt Rockerz 650 Pro" />
+        <div class="product-info">
+          <h3>boAt Rockerz 650 Pro</h3>
+          <p>Wireless headphones with deep bass and 60hr battery backup.</p>
+          <div class="product-price">₹2,999</div>
+          <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="assets\img\img11.png" alt="Apple iPhone 16 Pro Max" />
+        <div class="product-info">
+          <h3>Apple iPhone 16 Pro Max</h3>
+          <p>Latest iPhone with A18 Bionic, ProMotion Display, and 5G.</p>
+          <div class="product-price">₹1,30,000</div>
+          <button class="add-to-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const addToCartButtons = document.querySelectorAll(".add-to-cart");
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const productCard = button.closest(".product-card");
+      const productName = productCard.querySelector("h3").textContent;
+      const productPrice = parseFloat(
+        productCard.querySelector(".product-price").textContent
+          .replace("₹", "")
+          .replace(/,/g, "")
+      );
+      const productImage = productCard.querySelector("img").src;
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const existingProduct = cart.find(item => item.name === productName);
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cart.push({
+          name: productName,
+          price: productPrice,
+          image: productImage,
+          quantity: 1
+        });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      button.innerHTML = '<i class="fas fa-check"></i> Added to Cart';
+      button.disabled = true;
+      button.style.backgroundColor = "#4B0082"; 
+      button.style.cursor = "not-allowed";
+    });
+  });
+});
+</script>
+
+
+  <footer class="site-footer">
+    <p>&copy; 2025 IT Hardware & Software. All Rights Reserved.</p>
+  </footer>
+
+  <script src="assets/script/script.js"></script>
+</body>
+</html>

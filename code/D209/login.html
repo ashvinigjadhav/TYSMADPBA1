@@ -1,0 +1,130 @@
+<html>
+
+<head>
+    <title>
+        PharmEasy
+
+    </title>
+
+    <link rel="stylesheet" href="login.css">
+
+</head>
+
+<body>
+
+    <header>
+        
+        <nav class="navbar">
+
+            <div class="container">
+
+                <div  class="lhs">
+
+                    <img src="logo.png">
+
+                    <h1><b>PharmEasy</b></h1>
+                </div>
+
+                <div class="rhs">
+
+                    <a href="index.html">Home</a>
+                    <a href="index.html">About Us</a>
+                    <a href="prod.html">Products</a>
+                    <a href="#login">Login</a>
+                    <a href="reg.html">Register</a>
+                    <form action="logout.php" method="POST">
+                        <button type="submit">Logout</button>
+                    </form>
+                    
+                    <button onclick="logout()">Logout</button>
+     
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <form action="login.php" method="POST">
+
+
+            <h1>Login Form</h1>
+            <div class="formA">
+
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="pass" placeholder="Password" required>
+                <input type="submit" value="Login" id="submitBtn" disabled>
+
+
+            </div>
+
+        </form>
+    </main>
+
+    
+    <footer>
+
+        <p>Copyright © 2025 , Designed by Samyak Kedari</p>
+    </footer>
+
+    <script>
+        const emailInput = document.getElementById('email');
+        const passInput = document.getElementById('pass');
+        const submitBtn = document.getElementById('submitBtn');
+    
+     
+        const currentUser = sessionStorage.getItem('loggedInUser');
+        if (currentUser) {
+            alert("You are already logged in!");
+            window.location.href = "index.html"; 
+        }
+    
+        function validateLoginForm() {
+            const email = emailInput.value.trim();
+            const password = passInput.value;
+    
+            const isEmailValid = email.endsWith('@gmail.com');
+            const isPasswordValid = password.length >= 6;
+    
+            submitBtn.disabled = !(isEmailValid && isPasswordValid);
+        }
+    
+        emailInput.addEventListener('input', validateLoginForm);
+        passInput.addEventListener('input', validateLoginForm);
+    
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+    
+            const email = emailInput.value.trim();
+            const password = passInput.value;
+    
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+    
+            const user = users.find(u => u.email === email && u.password === password);
+    
+            if (user) {
+                sessionStorage.setItem('loggedInUser', JSON.stringify(user));
+                alert(`Welcome, ${user.name}!`);
+                window.location.href = "index.html";
+            } else {
+                alert("Invalid email or password.");
+            }
+        });
+
+
+
+        const loggedInUser = sessionStorage.getItem('loggedInUser');
+        if (!loggedInUser) {
+            
+            document.querySelector('button').style.display = 'none';
+        }
+    
+        function logout() {
+            sessionStorage.removeItem('loggedInUser');
+            alert("You have been logged out.");
+            window.location.href = "login.html"; 
+        }
+
+    </script>
+    
+</body>
