@@ -1,0 +1,99 @@
+:root {
+  --pink: #e91e63;
+  --purple: #9c27b0;
+  --light-pink: #f8bbd9;
+  --light-purple: #e1bee7;
+}
+
+.navbar-brand {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.text-pink {
+  color: var(--pink) !important;
+}
+
+.btn-pink {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  border: none;
+  color: white;
+}
+
+.btn-pink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+  color: white;
+}
+
+.schedule-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(233, 30, 99, 0.1);
+  transition: all 0.3s ease;
+}
+
+.schedule-card:hover {
+  transform: translateY(-3px);
+}
+
+.time-badge {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.taken-badge {
+  background: #28a745;
+  color: white;
+}
+
+.missed-badge {
+  background: #dc3545;
+  color: white;
+}
+
+.pending-badge {
+  background: #ffc107;
+  color: black;
+}
+
+.medicine-item {
+  border-left: 4px solid var(--pink);
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 0 10px 10px 0;
+  background: rgba(233, 30, 99, 0.05);
+}
+
+.calendar-day {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calendar-day:hover {
+  background: var(--light-pink);
+}
+
+.calendar-day.active {
+  background: var(--pink);
+  color: white;
+}
+
+.header-section {
+  background: linear-gradient(135deg, var(--light-pink), var(--light-purple));
+}
+
+.custom-pink {
+  background: var(--pink);
+}
