@@ -1,0 +1,191 @@
+:root {
+    --pink: #e91e63;
+    --purple: #9c27b0;
+    --light-pink: #f8bbd9;
+    --light-purple: #e1bee7;
+}
+
+.login-page {
+    background: linear-gradient(135deg, var(--light-pink), var(--light-purple));
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.login-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.login-left {
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    color: white;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.heartbeat-icon {
+    font-size: 4rem;
+}
+
+.login-form {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn-pink {
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.btn-pink:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+    color: white;
+}
+
+.btn-pink:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 0.2rem rgba(233, 30, 99, 0.25);
+}
+
+.text-pink {
+    color: var(--pink) !important;
+}
+
+.brand-logo {
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+.feature-highlight {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-left: 3px solid white;
+    transition: all 0.3s ease;
+}
+
+.feature-highlight:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateX(5px);
+}
+
+.demo-alert {
+    max-width: 350px;
+}
+
+/* Input group styling */
+.input-group-text {
+    border-radius: 10px 0 0 10px;
+    border: 2px solid #e9ecef;
+    border-right: none;
+}
+
+.border-start-0 {
+    border-left: none !important;
+}
+
+.border-end-0 {
+    border-right: none !important;
+}
+
+/* Form labels */
+.form-label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+/* Bootstrap overrides */
+.form-check-input:checked {
+    background-color: var(--pink);
+    border-color: var(--pink);
+}
+
+/* Alert styling */
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.btn-close:focus {
+    box-shadow: none;
+}
+
+/* Feature link styling */
+.feature-link {
+    display: block;
+    font-size: 0.85rem;
+    color: white;
+    opacity: 0.9;
+}
+
+/* Link styling */
+a.text-muted {
+    transition: color 0.3s ease;
+}
+
+a.text-muted:hover {
+    color: var(--pink) !important;
+}
+
+a.text-pink:hover {
+    text-decoration: underline !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-left {
+        padding: 2rem;
+    }
+    
+    .login-form {
+        padding: 2rem;
+    }
+    
+    .heartbeat-icon {
+        font-size: 3rem;
+    }
+}
+
+/* Animation for spinner */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.fa-spinner.fa-spin {
+    animation: spin 1s linear infinite;
+}

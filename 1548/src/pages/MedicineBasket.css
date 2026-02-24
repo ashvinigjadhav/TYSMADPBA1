@@ -1,0 +1,112 @@
+:root {
+  --pink: #e91e63;
+  --purple: #9c27b0;
+  --light-pink: #f8bbd9;
+  --light-purple: #e1bee7;
+}
+
+.navbar-brand {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.text-pink {
+  color: var(--pink) !important;
+}
+
+.btn-pink {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  border: none;
+  color: white;
+}
+
+.btn-pink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+  color: white;
+}
+
+.medicine-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(233, 30, 99, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.medicine-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.15);
+}
+
+.stock-indicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.stock-high {
+  background: #28a745;
+}
+
+.stock-medium {
+  background: #ffc107;
+}
+
+.stock-low {
+  background: #dc3545;
+}
+
+.expiry-warning {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+}
+
+.expiry-good {
+  background: linear-gradient(135deg, #00b894, #00a085);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantity-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--pink);
+  background: white;
+  color: var(--pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.quantity-btn:hover {
+  background: var(--pink);
+  color: white;
+}
+
+.header-section {
+  background: linear-gradient(135deg, var(--light-pink), var(--light-purple));
+}
+
+.custom-pink {
+  background: var(--pink);
+}
