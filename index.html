@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learnify - Responsive Learning Platform (Prototype)</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom responsive tweaks and media queries */
+        
+         :root {
+            --brand: #0d6efd
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial
+        }
+        /* Large hero spacing */
+        
+        .hero {
+            padding: 4rem 0;
+            background: linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%)
+        }
+        /* Card grid adjustments */
+        
+        @media (min-width: 768px) {
+            .course-card {
+                height: 100%
+            }
+        }
+        /* Make footer stick-in-place on small viewports */
+        
+        footer {
+            background: #f8f9fa
+        }
+        /* Override table on very small screens to be horizontal scroll */
+        
+        .table-responsive {
+            overflow-x: auto
+        }
+        /* Slight header compact on small screens */
+        
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1rem
+            }
+            .hero h1 {
+                font-size: 1.5rem
+            }
+            .hero p {
+                font-size: 0.9rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">Learnify</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cart">Cart</a></li>
+                    <li class="nav-item ms-2"><a class="btn btn-outline-primary btn-sm" href="#login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME / HERO -->
+    <header id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-6 fw-bold">Learn the skills that move your career forward</h1>
+                    <p class="lead">Interactive lessons, curated courses, and certificates — built with responsive design so learning works anywhere: desktop, tablet, or phone.</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a class="btn btn-primary btn-lg" href="#courses">Browse Courses</a>
+                        <a class="btn btn-outline-secondary btn-lg" href="#about">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Example feature cards using grid/flex -->
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="card p-3 h-100">
+                                <div class="d-flex align-items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg width="40" height="40" viewBox="0 0 16 16" class="bi bi-laptop" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 0 0-1 1v7h14V4a1 1 0 0 0-1-1H2z"/><path fill-rule="evenodd" d="M0 11.5A1.5 1.5 0 0 0 1.5 13h13A1.5 1.5 0 0 0 16 11.5V11H0v.5z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0">Responsive UI</h6>
+                                        <small class="text-muted">Learn on any device</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card p-3 h-100">
+                                <div class="d-flex align-items-start gap-3">
+                                    <div class="flex-shrink-0">
+                                        <svg width="40" height="40" viewBox="0 0 16 16" class="bi bi-people" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13 7c0 1-1 2-3 2s-3-1-3-2 1-2 3-2 3 1 3 2z"/></svg>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0">Community</h6>
+                                        <small class="text-muted">Discuss & collaborate</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <div class="card p-3">
+                                <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3">
+                                    <div>
+                                        <strong>New:</strong> 40+ courses added this month
+                                    </div>
+                                    <a href="#courses" class="btn btn-sm btn-outline-primary">Explore new courses</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row gx-4">
+                <div class="col-lg-6">
+                    <h2>About Learnify</h2>
+                    <p>Learnify is a responsive web-based learning platform focused on delivering concise, practical lessons using modern UI patterns. The platform demonstrates Bootstrap containers, grid system, forms, tables, and flexbox layouts to ensure
+                        consistency across devices.</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Mobile-first responsive design</li>
+                        <li class="list-group-item">Accessible and semantic HTML</li>
+                        <li class="list-group-item">Scalable components using Bootstrap</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row row-cols-1 row-cols-md-2 g-3">
+                        <div class="col">
+                            <div class="card h-100 p-3">
+                                <h5 class="card-title">Our Mission</h5>
+                                <p class="card-text small">Make high-quality learning accessible on any device.</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 p-3">
+                                <h5 class="card-title">Our Approach</h5>
+                                <p class="card-text small">Micro-lessons, practical tasks, and real-world projects.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES (Grid with responsive cards and add-to-cart) -->
+    <section id="courses" class="py-5 bg-light">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="mb-0">Featured Courses</h3>
+                <small class="text-muted">Sorted by popularity</small>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <!-- Course Card Example -->
+                <div class="col">
+                    <div class="card course-card h-100">
+                        <img src="https://via.placeholder.com/600x200?text=Course+Image" class="card-img-top" alt="course">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Responsive Web Design</h5>
+                            <p class="card-text small flex-grow-1">Learn Bootstrap, media queries, and flexbox with hands-on examples.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="fw-bold">₹499</div>
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-primary" onclick="addToCart(this)">Add</button>
+                                    <button class="btn btn-sm btn-primary" onclick="location.hash='contact'">Enroll</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copy more cards for demonstration -->
+                <div class="col">
+                    <div class="card course-card h-100">
+                        <img src="https://via.placeholder.com/600x200?text=Course+Image" class="card-img-top" alt="course">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">JavaScript Essentials</h5>
+                            <p class="card-text small flex-grow-1">Core JavaScript concepts and DOM manipulation.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="fw-bold">₹599</div>
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-primary" onclick="addToCart(this)">Add</button>
+                                    <button class="btn btn-sm btn-primary" onclick="location.hash='contact'">Enroll</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card course-card h-100">
+                        <img src="https://via.placeholder.com/600x200?text=Course+Image" class="card-img-top" alt="course">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Data Structures (Beginner)</h5>
+                            <p class="card-text small flex-grow-1">Learn arrays, stacks, queues with examples and visuals.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="fw-bold">₹699</div>
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-primary" onclick="addToCart(this)">Add</button>
+                                    <button class="btn btn-sm btn-primary" onclick="location.hash='contact'">Enroll</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CART PAGE -->
+    <section id="cart" class="py-5">
+        <div class="container">
+            <h3>Your Cart</h3>
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Course</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cartBody">
+                        <tr class="text-muted">
+                            <td colspan="5">No courses in cart — add some from the Courses section.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <a class="btn btn-outline-secondary" href="#courses">Continue browsing</a>
+                </div>
+                <div>
+                    <strong>Total: </strong> <span id="cartTotal">₹0</span>
+                    <button class="btn btn-primary ms-3" onclick="checkout()">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT PAGE (interactive form) -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Contact Us</h3>
+                    <p class="small text-muted">Have a question? Fill in the form and we'll get back to you.</p>
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label class="form-label">Full name</label>
+                            <input type="text" class="form-control" name="fullname" placeholder="Your name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="you@example.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Reason</label>
+                            <select class="form-select" name="reason">
+                <option>General question</option>
+                <option>Support</option>
+                <option>Partnership</option>
+              </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-control" rows="4" name="message" placeholder="Tell us more..."></textarea>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="subscribe" checked>
+                            <label class="form-check-label" for="subscribe">Subscribe to updates</label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label d-block">Preferred contact method</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="contactMethod" id="cm1" value="email" checked>
+                                <label class="form-check-label" for="cm1">Email</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="contactMethod" id="cm2" value="phone">
+                                <label class="form-check-label" for="cm2">Phone</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 d-flex align-items-center gap-2">
+                            <label class="form-label mb-0">Urgent</label>
+                            <div class="form-check form-switch ms-2">
+                                <input class="form-check-input" type="checkbox" id="urgentSwitch">
+                                <label class="form-check-label" for="urgentSwitch">Toggle</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Select course of interest</label>
+                            <input list="coursesList" class="form-control" placeholder="Start typing...">
+                            <datalist id="coursesList">
+                <option value="Responsive Web Design">
+                <option value="JavaScript Essentials">
+                <option value="Data Structures (Beginner)">
+              </datalist>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send message</button>
+                    </form>
+                </div>
+                <div class="col-lg-6">
+                    <h5>Contact details</h5>
+                    <p class="small text-muted">Email: support@learnify.example | Phone: +91 90000 00000</p>
+                    <div class="card">
+                        <div class="card-body">
+                            <h6>Office hours</h6>
+                            <p class="small mb-0">Mon - Fri: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTRATION PAGE -->
+    <section id="register" class="py-5">
+        <div class="container">
+            <h3>Register</h3>
+            <form class="row g-3" id="registerForm">
+                <div class="col-md-6">
+                    <label class="form-label">First name</label>
+                    <input type="text" class="form-control" name="firstName" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Last name</label>
+                    <input type="text" class="form-control" name="lastName" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Role</label>
+                    <select class="form-select" name="role">
+            <option>Student</option>
+            <option>Instructor</option>
+            <option>Admin</option>
+          </select>
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="tos">
+                        <label class="form-check-label" for="tos">I agree to the Terms of Service</label>
+                    </div>
+                </div>
+                <div class="col-12 d-flex gap-2">
+                    <button class="btn btn-primary" type="submit">Create account</button>
+                    <button class="btn btn-outline-secondary" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- LOGIN PAGE (flexbox alignment) -->
+    <section id="login" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <h4 class="mb-3">Login</h4>
+                        <form id="loginForm" class="d-flex flex-column gap-3">
+                            <div class="d-flex gap-2 flex-column flex-sm-row">
+                                <input type="text" class="form-control" placeholder="Username or email" required>
+                                <input type="password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="remember">
+                                    <label class="form-check-label" for="remember">Remember me</label>
+                                </div>
+                                <a href="#contact" class="small">Forgot?</a>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-primary flex-grow-1">Login</button>
+                                <a class="btn btn-outline-secondary" href="#register">Register</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 mt-4">
+        <div class="container d-flex justify-content-between align-items-center">
+            <small class="text-muted">© Learnify 2025</small>
+            <div class="d-flex gap-2">
+                <a class="small" href="#about">About</a>
+                <a class="small" href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS + simple app script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Minimal cart example (client-side only for prototype)
+        const cart = [];
+
+        function addToCart(btn) {
+            const card = btn.closest('.card');
+            const title = card.querySelector('.card-title').innerText;
+            const priceText = card.querySelector('.fw-bold').innerText.replace('₹', '').trim();
+            const price = Number(priceText) || 0;
+            const existing = cart.find(c => c.title === title);
+            if (existing) existing.qty++;
+            else cart.push({
+                title,
+                price,
+                qty: 1
+            });
+            renderCart();
+        }
+
+        function renderCart() {
+            const tbody = document.getElementById('cartBody');
+            tbody.innerHTML = '';
+            if (cart.length === 0) {
+                tbody.innerHTML = '<tr class="text-muted"><td colspan="5">No courses in cart — add some from the Courses section.</td></tr>';
+                document.getElementById('cartTotal').innerText = '₹0';
+                return;
+            }
+            let total = 0;
+            cart.forEach((item, i) => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${item.title}</td><td>₹${item.price}</td><td><input type="number" min="1" value="${item.qty}" data-index="${i}" class="form-control form-control-sm qtyInput" style="width:80px"></td><td>₹${subtotal}</td><td><button class="btn btn-sm btn-outline-danger" data-index="${i}">Remove</button></td>`;
+                tbody.appendChild(tr);
+            });
+            document.getElementById('cartTotal').innerText = '₹' + total;
+
+            // wire up qty and remove
+            document.querySelectorAll('.qtyInput').forEach(el => el.addEventListener('change', (e) => {
+                const idx = Number(e.target.dataset.index);
+                const val = Number(e.target.value);
+                if (val < 1) {
+                    e.target.value = 1;
+                    return
+                }
+                cart[idx].qty = val;
+                renderCart();
+            }));
+            document.querySelectorAll('button[data-index]').forEach(el => el.addEventListener('click', (e) => {
+                const idx = Number(e.target.dataset.index);
+                cart.splice(idx, 1);
+                renderCart();
+            }));
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Cart is empty');
+                return
+            }
+            alert('Checkout demo — total: ' + document.getElementById('cartTotal').innerText);
+        }
+
+        // Contact form handler (demo)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent (demo). Thank you!');
+            e.target.reset();
+        });
+
+        // Register/login demo
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Account created (demo).');
+            e.target.reset();
+        });
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Logged in (demo).');
+        });
+    </script>
+</body>
+
+</html>
