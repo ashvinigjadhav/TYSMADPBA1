@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/MyfullStackProject/static/css/main.c1b3ad1f.css",
+    "main.js": "/MyfullStackProject/static/js/main.7de6b419.js",
+    "static/media/login.gif": "/MyfullStackProject/static/media/login.6ae0ee2e921058379d89.gif",
+    "static/media/register.gif": "/MyfullStackProject/static/media/register.2931f0f0157a3d45e737.gif",
+    "index.html": "/MyfullStackProject/index.html",
+    "main.c1b3ad1f.css.map": "/MyfullStackProject/static/css/main.c1b3ad1f.css.map",
+    "main.7de6b419.js.map": "/MyfullStackProject/static/js/main.7de6b419.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c1b3ad1f.css",
+    "static/js/main.7de6b419.js"
+  ]
+}
